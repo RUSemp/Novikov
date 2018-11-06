@@ -8,19 +8,17 @@ namespace Game2
 {
     public class ComputerTrying
     {
-        public int[] TryNumber(int[] bulcow)
+        public int[] TryNumber(int[] bulcow, int[] answer)
         {
-            int[] num = new int[4], save=new int[4];
-            int i, j;
             var r = new Random();
-            if((bulcow[0]==0)&&(bulcow[1]==0))
+           
+            if (bulcow[0] != 4)
             {
-                for(i=0;i<4;i++)
-                {
-                    num[i] = r.Next(0, 9);
-                }
+                answer[bulcow[0]]++;
             }
-            
+
+            return answer;
+
 
         }
     }

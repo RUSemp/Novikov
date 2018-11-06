@@ -12,28 +12,37 @@ namespace Game2
         {
             var Num = new Number();
             var check = new Check();
-            int[] num = Num.Generate()/*,test = new int[2], testnum = new int[4]*/;
+            var comp = new ComputerTrying();
+            int[] answer = new int[4], bulcow=new int[2];
+            int[] num = Num.Generate();
             int i;
+            
             for (i=0;i<4;i++)
             {
                 Console.Write(num[i]);
+                answer[i] = -1;
             }
             Console.WriteLine();
-            //for (i = 0; i < 4; i++)
-            //{
-            //    testnum[i] = Convert.ToInt32(Console.ReadLine());
-            //}
-            //Console.WriteLine();
-            //for (i = 0; i < 4; i++)
-            //{
-            //    Console.Write(testnum[i]);
-            //}
 
-            //test = check.Checking(testnum, num);
-            //Console.WriteLine($"{test[0]} bulls, {test[1]} cows");
-
-
-
+            while (bulcow[0] != 4)
+            {
+                answer = comp.TryNumber(bulcow,answer);
+                for (i = 0; i < 4; i++)
+                {
+                    Console.Write(answer[i]);
+                }
+                Console.WriteLine();
+                bulcow = check.Checking(answer, num);
+                Console.WriteLine($"{bulcow[0]} быков {bulcow[1]} коров");
+                if (bulcow[0] == 4)
+                {
+                    Console.Write("Заданное число: ");
+                    for (i = 0; i < 4; i++)
+                    {
+                        Console.Write(answer[i]);
+                    }
+                }
+            }
 
             Console.ReadKey();
         }
